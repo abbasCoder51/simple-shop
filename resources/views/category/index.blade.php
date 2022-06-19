@@ -26,6 +26,8 @@
                     <td>{{ $category->created_at }}</td>
                     <td>{{ $category->updated_at }}</td>
                     <td>
+                        <a href="{{ route('categories.show', $category->id) }}" class="btn btn-primary">Show</a>
+                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning">Edit</a>
                         <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
                             @csrf
                             @method('DELETE')
