@@ -8,6 +8,9 @@
             {{ session()->get('success') }}
         </div>
     @endif
+    <div style="padding: 20px; display: flex; justify-content: flex-end;">
+        <a href="{{ route('categories.create') }}" class="btn btn-info">Create Category</a>
+    </div>
     <table class="table">
         <thead>
             <tr>

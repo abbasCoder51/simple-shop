@@ -8,6 +8,9 @@
             {{ session()->get('success') }}
         </div>
     @endif
+    <div style="padding: 20px; display: flex; justify-content: flex-end;">
+        <a href="{{ route('products.create') }}" class="btn btn-info">Create Product</a>
+    </div>
     <table class="table">
         <thead>
         <tr>
