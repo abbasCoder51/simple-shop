@@ -55,6 +55,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        $category->products()->delete();
         $category->delete();
 
         return redirect('/admin/categories')
