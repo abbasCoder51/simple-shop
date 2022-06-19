@@ -14,4 +14,10 @@ class CategoryController extends Controller
         return $this->view('category.index')
             ->with('categories', $categories->get());
     }
+
+    public function show(Category $category)
+    {
+        return $this->view('category.show')
+            ->with('category', $category);
+    }
 }
