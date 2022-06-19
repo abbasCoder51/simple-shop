@@ -29,22 +29,33 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return View
      */
     public function create()
     {
-        //
+        $categories = new Category();
+
+        return $this->view('product.create')
+            ->with('categories', $categories->get());
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return View
      */
     public function store(Request $request)
     {
-        //
+        $productModel = new Product();
+        $product = $productModel->create([
+            'name' => $request->get('productName'),
+            'quantity' => $request->get('productQuantity'),
+            'category_id' => $request->get('productCategory')
+        ]);
+
+        return $this->view('product.show')
+            ->with('product', $product);
     }
 
     /**
