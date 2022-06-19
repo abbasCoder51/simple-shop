@@ -39,7 +39,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -77,13 +77,20 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
+     * @param Request $request
+     * @param Product $product
+     * @return Application|Redirector|RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->update([
+            'name' => $request->get('productName'),
+            'quantity' => $request->get('productName'),
+            'category_id' => $request->get('productCategory')
+        ]);
+
+        return redirect('/admin/products')
+            ->with('success', 'Updated product - ' . $product->name);
     }
 
     /**
