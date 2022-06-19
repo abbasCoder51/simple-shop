@@ -26,7 +26,7 @@
                 <td><a href="{{ route('products.show', $product->id) }}">{{ $product->id }}</a></td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->quantity }}</td>
-                <td>{{ $product->category }}</td>
+                <td>{{ $product->category->name }}</td>
                 <td>{{ $product->created_at }}</td>
                 <td>{{ $product->updated_at }}</td>
                 <td>
