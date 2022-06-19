@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
@@ -61,12 +62,16 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Product $product
+     * @return View
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $categories = new Category();
+
+        return $this->view('product.edit')
+            ->with('product', $product)
+            ->with('categories', $categories->get());
     }
 
     /**
