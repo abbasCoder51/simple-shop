@@ -36,4 +36,20 @@ class CategoryController extends Controller
 
         return redirect('/admin/categories/' . $category->id);
     }
+
+    public function create()
+    {
+        return $this->view('category.create');
+    }
+
+    public function store(Request $request)
+    {
+        $categoryModel = new Category();
+        $category = $categoryModel->create([
+            'name' => $request->get('categoryName')
+        ]);
+
+        return $this->view('category.show')
+            ->with('category', $category);
+    }
 }
