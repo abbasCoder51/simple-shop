@@ -3,6 +3,11 @@
 @section('title', 'Categories')
 
 @section('content_body')
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <table class="table">
         <thead>
             <tr>
@@ -10,6 +15,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Create At</th>
                 <th scope="col">Updated At</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +25,12 @@
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->created_at }}</td>
                     <td>{{ $category->updated_at }}</td>
+                    <td>
+                        <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete</button>
+                        </form></td>
                 </tr>
             @empty
                 <tr>

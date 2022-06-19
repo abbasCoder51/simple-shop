@@ -52,4 +52,12 @@ class CategoryController extends Controller
         return $this->view('category.show')
             ->with('category', $category);
     }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return redirect('/admin/categories')
+            ->with('success', 'Deleted category - ' . $category->name);
+    }
 }
