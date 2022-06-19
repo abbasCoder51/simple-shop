@@ -46,12 +46,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Product $product
+     * @return View
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return $this->view('product.show')
+            ->with('product', $product);
     }
 
     /**
