@@ -21,18 +21,18 @@
         </tr>
         </thead>
         <tbody>
-        @forelse($categories as $category)
+        @forelse($products as $product)
             <tr>
-                <td><a href="{{ route('categories.show', $category->id) }}">{{ $category->id }}</a></td>
-                <td>{{ $category->name }}</td>
-                <td>{{ $category->quantity }}</td>
-                <td>{{ $category->category }}</td>
-                <td>{{ $category->created_at }}</td>
-                <td>{{ $category->updated_at }}</td>
+                <td><a href="{{ route('products.show', $product->id) }}">{{ $product->id }}</a></td>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->quantity }}</td>
+                <td>{{ $product->category }}</td>
+                <td>{{ $product->created_at }}</td>
+                <td>{{ $product->updated_at }}</td>
                 <td>
-                    <a href="{{ route('categories.show', $category->id) }}" class="btn btn-primary">Show</a>
-                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning">Edit</a>
-                    <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+                    <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">Show</a>
+                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
+                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger">Delete</button>
@@ -40,7 +40,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4" class="text-center">No results found</td>
+                <td colspan="7" class="text-center">No results found</td>
             </tr>
         @endforelse
         </tbody>
