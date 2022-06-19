@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Contracts\View\View;
 
 class CategoryController extends Controller
 {
-    public function show(Request $request)
+    public function index(): View
     {
-        dd($request);
+        $categories = new Category();
+
+        return $this->view('category.index')
+            ->with('categories', $categories->get());
     }
 }
